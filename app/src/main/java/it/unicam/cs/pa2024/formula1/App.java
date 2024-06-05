@@ -3,12 +3,32 @@
  */
 package it.unicam.cs.pa2024.formula1;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ * The main class to start the Formula 1 simulation.
+ */
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        try (Scanner scanner = new Scanner(System.in)) {
+            Menu.displayMenu();
+            List<String> validOptions = Arrays.asList("CircuitoAperto", "CircuitoAdAnello");
+            String trackSelected = Menu.getValidatedInput(scanner, validOptions);
+            Track track = TrackLoader.loadTrack(trackSelected + ".txt");
+            List<Driver> drivers = new ArrayList<>();
+            drivers.add(new Bot("Bot1", new Position(16, 6))); // Inizializza con la posizione di partenza
+            drivers.add(new Player("Player1", new Position(16, 7))); // Aggiungi un giocatore umano
+
+            GameEngine gameEngine = new GameEngine(track, drivers);
+            gameEngine.startRace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 }
