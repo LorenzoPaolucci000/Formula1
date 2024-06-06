@@ -20,11 +20,12 @@ public class App {
             List<String> validOptions = Arrays.asList("CircuitoAperto", "CircuitoAdAnello");
             String trackSelected = Menu.getValidatedInput(scanner, validOptions);
             Track track = TrackLoader.loadTrack(trackSelected + ".txt");
-            List<Driver> drivers = new ArrayList<>();
-            drivers.add(new Bot("Bot1", new Position(16, 6))); // Inizializza con la posizione di partenza
-            drivers.add(new Player("Player1", new Position(16, 7))); // Aggiungi un giocatore umano
+            InputHandler inputHandler = new InputHandler(scanner);
+            List<DriverInterface> driverInterfaces = new ArrayList<>();
+            driverInterfaces.add(new Bot("Bot1", new Position(8, 16)));          // Inizializza con la posizione di partenza
+            driverInterfaces.add(new Player("Player1", new Position(10, 16), inputHandler));   // Aggiunge un giocatore umano
 
-            GameEngine gameEngine = new GameEngine(track, drivers);
+            GameEngine gameEngine = new GameEngine(track, driverInterfaces);
             gameEngine.startRace();
         } catch (IOException e) {
             e.printStackTrace();

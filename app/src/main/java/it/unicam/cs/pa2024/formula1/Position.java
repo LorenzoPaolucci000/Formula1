@@ -1,16 +1,17 @@
 package it.unicam.cs.pa2024.formula1;
+
 /**
- * This class represents a position in the track grid.
+ * Questa classe rappresenta una posizione nella griglia del tracciato.
  */
 public class Position {
     private int x;
     private int y;
 
     /**
-     * Constructs a Position with the specified coordinates.
+     * Costruisce una posizione con le coordinate specificate.
      *
-     * @param x the x-coordinate
-     * @param y the y-coordinate
+     * @param x la coordinata x
+     * @param y la coordinata y
      */
     public Position(int x, int y) {
         this.x = x;
@@ -18,32 +19,31 @@ public class Position {
     }
 
     /**
-     * Returns the x-coordinate of the position.
+     * Restituisce la coordinata x della posizione.
      *
-     * @return the x-coordinate
+     * @return la coordinata x
      */
     public int getX() {
         return x;
     }
 
     /**
-     * Returns the y-coordinate of the position.
+     * Restituisce la coordinata y della posizione.
      *
-     * @return the y-coordinate
+     * @return la coordinata y
      */
     public int getY() {
         return y;
     }
 
     /**
-     * Moves the position by the specified delta values.
+     * Sposta la posizione dei valori delta specificati.
      *
-     * @param dx the delta x
-     * @param dy the delta y
+     * @param dx il delta x
+     * @param dy il delta y
      */
     public void move(int dx, int dy) {
         this.x += dx;
         this.y += dy;
     }
 }
-

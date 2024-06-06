@@ -3,43 +3,43 @@ package it.unicam.cs.pa2024.formula1;
 import java.util.List;
 
 /**
- * This class represents the race track.
+ * Questa classe rappresenta il tracciato di gara.
  */
 public class Track {
     private char[][] grid;
 
     /**
-     * Constructs a Track with the specified grid.
+     * Costruisce un tracciato di gara con la griglia specificata.
      *
-     * @param grid the grid representing the track
+     * @param grid la griglia che rappresenta il tracciato
      */
     public Track(char[][] grid) {
         this.grid = grid;
     }
 
     /**
-     * Returns the grid of the track.
+     * Restituisce la griglia del tracciato.
      *
-     * @return the grid
+     * @return la griglia
      */
     public char[][] getGrid() {
         return grid;
     }
 
     /**
-     * Displays the current state of the track with the drivers' positions.
+     * Visualizza lo stato attuale del tracciato con le posizioni dei piloti.
      *
-     * @param drivers the list of drivers
+     * @param drivers la lista dei piloti
      */
-    public void display(List<Driver> drivers) {
+    public void display(List<DriverInterface> drivers) {
         char[][] displayGrid = new char[grid.length][];
         for (int i = 0; i < grid.length; i++) {
             displayGrid[i] = grid[i].clone();
         }
 
-        for (Driver driver : drivers) {
+        for (DriverInterface driver : drivers) {
             Position pos = driver.getPosition();
-            displayGrid[pos.getX()][pos.getY()] = driver instanceof Bot ? 'B' : 'P';
+            displayGrid[pos.getY()][pos.getX()] = driver instanceof Bot ? 'B' : 'P';
         }
 
         for (char[] row : displayGrid) {
@@ -51,14 +51,14 @@ public class Track {
     }
 
     /**
-     * Checks if the specified position is valid (not a wall or out of bounds).
+     * Verifica se la posizione specificata è valida (ad esempio fuori dai limiti della pista).
      *
-     * @param position the position to check
-     * @return true if the position is valid, false otherwise
+     * @param position la posizione da verificare
+     * @return true se la posizione è valida, false altrimenti
      */
     public boolean isValidPosition(Position position) {
         int x = position.getX();
         int y = position.getY();
-        return x >= 0 && x < grid.length && y >= 0 && y < grid[0].length && grid[x][y] != 'x';
+        return x >= 0 && x < grid[0].length && y >= 0 && y < grid.length && grid[y][x] != 'x';
     }
 }

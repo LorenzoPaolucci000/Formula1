@@ -1,28 +1,41 @@
 package it.unicam.cs.pa2024.formula1;
 
 /**
- * This interface represents a driver in the race.
+ * Questa classe astratta rappresenta un pilota comune.
  */
-public interface Driver {
-    /**
-     * Moves the driver based on the current track state.
-     *
-     * @param track the track on which the driver moves
-     */
-    void move(Track track);
+public abstract class Driver implements DriverInterface {
+    protected Position position;
+    protected String name;
 
     /**
-     * Returns the current position of the driver.
+     * Costruisce un Driver con il nome specificato e la posizione di partenza.
      *
-     * @return the position
+     * @param name il nome del pilota
+     * @param startPosition la posizione di partenza
      */
-    Position getPosition();
+    public Driver(String name, Position startPosition) {
+        this.name = name;
+        this.position = startPosition;
+    }
 
     /**
-     * Returns the name of the driver.
+     * Verifica il movimento per assicurarsi che dx e dy siano compresi nell'intervallo [-3, 3].
      *
-     * @return the name
+     * @param dx il movimento orizzontale
+     * @param dy il movimento verticale
+     * @return true se il movimento è valido, false altrimenti
      */
-    String getName();
+    protected boolean isValidMove(int dx, int dy) {
+        return Math.abs(dx) <= 3 && Math.abs(dy) <= 3;
+    }
+
+    @Override
+    public Position getPosition() {
+        return position;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
 }
-

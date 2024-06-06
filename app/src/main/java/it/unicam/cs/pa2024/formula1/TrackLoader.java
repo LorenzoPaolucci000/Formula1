@@ -5,18 +5,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
- * This class provides functionality to load a track from a file.
+ * Questa classe fornisce funzionalità per caricare un tracciato da un file.txt.
  */
 public class TrackLoader {
     /**
-     * Loads a track from the specified resource file.
+     * Carica un tracciato dal file di risorsa specificato.
      *
-     * @param fileName the name of the resource file
-     * @return the loaded Track
-     * @throws IOException if an I/O error occurs
+     * @param fileName il nome del file di risorsa
+     * @return il tracciato caricato
+     * @throws IOException se si verifica un errore di I/O
      */
     public static Track loadTrack(String fileName) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(

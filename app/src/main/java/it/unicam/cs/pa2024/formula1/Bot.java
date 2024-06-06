@@ -3,44 +3,40 @@ package it.unicam.cs.pa2024.formula1;
 import java.util.Random;
 
 /**
- * This class represents a bot driver in the race.
+ * Questa classe rappresenta un bot driver nella gara.
  */
-public class Bot implements Driver {
-    private Position position;
-    private String name;
+public class Bot extends Driver {
     private Random random;
 
     /**
-     * Constructs a Bot with the specified name and starting position.
+     * Costruisce un Bot con il nome specificato e la posizione di partenza.
      *
-     * @param name the name of the bot
-     * @param startPosition the starting position
+     * @param name il nome del bot
+     * @param startPosition la posizione di partenza
      */
     public Bot(String name, Position startPosition) {
-        this.name = name;
-        this.position = startPosition;
+        super(name, startPosition);
         this.random = new Random();
     }
 
     @Override
     public void move(Track track) {
-        int dx = random.nextInt(3) - 1; // Random move: -1, 0, 1
-        int dy = random.nextInt(3) - 1; // Random move: -1, 0, 1
-        Position newPosition = new Position(position.getX() + dx, position.getY() + dy);
+        boolean validMove = false;
 
-        if (track.isValidPosition(newPosition)) {
-            this.position = newPosition;
+        while (!validMove) {
+            int dx = random.nextInt(7) - 3; // Movimento casuale tra -3 e 3
+            int dy = random.nextInt(7) - 3; // Movimento casuale tra -3 e 3
+
+            if (!isValidMove(dx, dy)) {
+                continue;
+            }
+
+            Position newPosition = new Position(position.getX() + dx, position.getY() - dy); // Inverti il segno di dy
+
+            if (track.isValidPosition(newPosition)) {
+                this.position = newPosition;
+                validMove = true;
+            }
         }
     }
-
-    @Override
-    public Position getPosition() {
-        return position;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
 }
-
