@@ -18,6 +18,11 @@ public class Player extends Driver {
         this.inputHandler = inputHandler;
     }
 
+    /**
+     * Metodo che serve per far muovere il giocatore nel tracciato in base all'input dell'utente.
+     *
+     * @param track il tracciato su cui si muove il giocatore
+     */
     @Override
     public void move(Track track) {
         boolean validMove = false;
@@ -32,7 +37,7 @@ public class Player extends Driver {
                 continue;
             }
 
-            Position newPosition = new Position(position.getX() + dx, position.getY() - dy); // Inverti il segno di dy
+            Position newPosition = new Position(position.getX() + dx, position.getY() - dy);
 
             if (track.isValidPosition(newPosition)) {
                 this.position = newPosition;

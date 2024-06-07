@@ -18,7 +18,7 @@ public class Track {
     }
 
     /**
-     * Restituisce la griglia del tracciato.
+     * Metodo che restituisce la griglia del tracciato.
      *
      * @return la griglia
      */
@@ -27,11 +27,11 @@ public class Track {
     }
 
     /**
-     * Visualizza lo stato attuale del tracciato con le posizioni dei piloti.
+     * Metodo che fa visualizzare lo stato attuale del tracciato con le posizioni dei piloti all'interno del tracciato.
      *
      * @param drivers la lista dei piloti
      */
-    public void display(List<DriverInterface> drivers) {
+    public void display(List<Driver> drivers) {
         char[][] displayGrid = new char[grid.length][];
         for (int i = 0; i < grid.length; i++) {
             displayGrid[i] = grid[i].clone();
@@ -51,7 +51,7 @@ public class Track {
     }
 
     /**
-     * Verifica se la posizione specificata è valida (ad esempio fuori dai limiti della pista).
+     * Metodo che verifica se la posizione specificata è valida (ad esempio fuori dai limiti della pista).
      *
      * @param position la posizione da verificare
      * @return true se la posizione è valida, false altrimenti

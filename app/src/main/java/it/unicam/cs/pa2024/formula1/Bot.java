@@ -19,6 +19,11 @@ public class Bot extends Driver {
         this.random = new Random();
     }
 
+    /**
+     * Metodo che serve per far muovere il bot nel tracciato in modo casuale.
+     *
+     * @param track il tracciato su cui si muove il bot
+     */
     @Override
     public void move(Track track) {
         boolean validMove = false;

@@ -22,16 +22,19 @@ public class Menu {
         System.out.println("****************************************************");
         System.out.println("*                  REGOLE DEL GIOCO                *");
         System.out.println("*                                                  *");
-        System.out.println("* 1. Ogni giocatore sceglie una direzione          *");
-        System.out.println("*    da muovere la propria macchina.               *");
-        System.out.println("* 2. Puoi muoverti di massimo tre caselle per volta*"); //TODO Da rivedere
+        System.out.println("* 1. Ogni giocatore sceglie una posizione (x,y)    *");
+        System.out.println("*    per muovere la propria macchina.              *");
+        System.out.println("* 2. Puoi muoverti di massimo tre caselle per volta*"); //TODO Da rivedere lettere accentate
         System.out.println("*    nelle direzioni: su, giù, sinistra, destra.   *");
         System.out.println("* 3. Non è possibile andare fuori dal confine del  *");
         System.out.println("*    circuito.                                     *");
+        System.out.println("* 4. Non è possibile andare in una posizione in cui*");
+        System.out.println("*    è presente un'altra macchina.(INCIDENTE!)     *");
         System.out.println("*                                                  *");
         System.out.println("*                   COME GIOCARE                   *");
+        System.out.println("*                                                  *");
         System.out.println("* - Ad ogni turno, inserisci le coordinate del     *");
-        System.out.println("*   tuo movimento.                                 *");
+        System.out.println("*   tuo movimento (prima dx e poi dy).             *");
         System.out.println("* - Esempio: per muoverti in alto verso destra,    *");
         System.out.println("*   digita: '1 2' (dx e dy)                        *");
         System.out.println("*                                                  *");
@@ -47,7 +50,7 @@ public class Menu {
     }
 
     /**
-     * Ottiene l'input validato dall'utente.
+     * Metodo che verifica e convalida l'input delle utente per quanto riguarda il tracciato da caricare.
      *
      * @param scanner lo scanner per legger l'input
      * @param validOptions le opzioni valide (CircuitoAperto o CircuitoAdAnello)

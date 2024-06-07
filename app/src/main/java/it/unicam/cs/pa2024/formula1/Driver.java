@@ -19,7 +19,7 @@ public abstract class Driver implements DriverInterface {
     }
 
     /**
-     * Verifica il movimento per assicurarsi che dx e dy siano compresi nell'intervallo [-3, 3].
+     * Metodo che verifica il movimento per assicurarsi che dx e dy siano compresi nell'intervallo [-3, 3].
      *
      * @param dx il movimento orizzontale
      * @param dy il movimento verticale

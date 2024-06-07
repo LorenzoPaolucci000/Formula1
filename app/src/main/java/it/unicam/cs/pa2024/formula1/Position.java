@@ -1,5 +1,7 @@
 package it.unicam.cs.pa2024.formula1;
 
+import java.util.Objects;
+
 /**
  * Questa classe rappresenta una posizione nella griglia del tracciato.
  */
@@ -36,14 +38,16 @@ public class Position {
         return y;
     }
 
-    /**
-     * Sposta la posizione dei valori delta specificati.
-     *
-     * @param dx il delta x
-     * @param dy il delta y
-     */
-    public void move(int dx, int dy) {
-        this.x += dx;
-        this.y += dy;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return x == position.x && y == position.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

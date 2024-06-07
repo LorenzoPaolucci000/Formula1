@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * The main class to start the Formula 1 simulation.
+ * Classe main che avvia il gioco di Formula1.
  */
 public class App {
 
@@ -21,11 +21,14 @@ public class App {
             String trackSelected = Menu.getValidatedInput(scanner, validOptions);
             Track track = TrackLoader.loadTrack(trackSelected + ".txt");
             InputHandler inputHandler = new InputHandler(scanner);
-            List<DriverInterface> driverInterfaces = new ArrayList<>();
-            driverInterfaces.add(new Bot("Bot1", new Position(8, 16)));          // Inizializza con la posizione di partenza
-            driverInterfaces.add(new Player("Player1", new Position(10, 16), inputHandler));   // Aggiunge un giocatore umano
 
-            GameEngine gameEngine = new GameEngine(track, driverInterfaces);
+            List<Driver> drivers = new ArrayList<>();
+            drivers.add(new Bot("Bot1", new Position(6, 16))); // Inizializza con la posizione di partenza
+            drivers.add(new Player("Player1", new Position(10, 16), inputHandler)); // Aggiunge un giocatore umano
+           // drivers.add(new Player("Player2", new Position(8, 15), inputHandler)); // Aggiunge un altro giocatore umano
+            System.out.println("Che la gara abbia inizio : Pronti, Partenza, Via!");
+            track.display(drivers);
+            GameEngine gameEngine = new GameEngine(track, drivers);
             gameEngine.startRace();
         } catch (IOException e) {
             e.printStackTrace();
