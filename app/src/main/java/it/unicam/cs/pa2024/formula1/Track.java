@@ -37,9 +37,9 @@ public class Track {
             displayGrid[i] = grid[i].clone();
         }
 
-        for (DriverInterface driver : drivers) {
+        for (Driver driver : drivers) {
             Position pos = driver.getPosition();
-            displayGrid[pos.getY()][pos.getX()] = driver instanceof Bot ? 'B' : 'P';
+            displayGrid[pos.getY()][pos.getX()] = driver.getDisplayCharacter();
         }
 
         for (char[] row : displayGrid) {
@@ -59,6 +59,6 @@ public class Track {
     public boolean isValidPosition(Position position) {
         int x = position.getX();
         int y = position.getY();
-        return x >= 0 && x < grid[0].length && y >= 0 && y < grid.length && grid[y][x] != 'x';
+        return y >= 0 && y < grid.length && x >= 0 && x < grid[0].length && grid[y][x] != 'x';
     }
 }

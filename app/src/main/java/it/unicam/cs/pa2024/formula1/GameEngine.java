@@ -1,6 +1,7 @@
 package it.unicam.cs.pa2024.formula1;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public class GameEngine {
     }
 
     /**
-     * Metodo che avvia la simulazione della gara e controlla le posizioni dei piloti durante il suo svolgimento verificandone la validità.
+     * Metodo che avvia la simulazione della gara e controlla il corretto processo dei turni di gioco dei piloti.
      *
      */
     public void startRace() {
@@ -32,20 +33,11 @@ public class GameEngine {
         while (!raceFinished) {
             System.out.println("Turno " + turn);
 
-            for (Driver driver : drivers) {
-                driver.move(track);
-                Position pos = driver.getPosition();
-                System.out.println(driver.getName() + " è alla posizione (" + pos.getX() + ", " + pos.getY() + ")");
-                // Verifica condizioni di vittoria
-                if (track.getGrid()[pos.getX()][pos.getY()] == 'F') {
-                    raceFinished = true;
-                    System.out.println(driver.getName() + " ha vinto la gara!");
-                    break;
-                }
-            }
+            List<Driver> driversToRemove = new ArrayList<>();
+            raceFinished = processTurn(driversToRemove);
 
-            // Controlla collisioni e rimuovi i driver che causano collisioni
-            checkCollisions();
+            // Rimuovi i piloti che hanno causato collisioni
+            drivers.removeAll(driversToRemove);
 
             // Visualizza lo stato attuale della gara
             track.display(drivers);
@@ -56,26 +48,67 @@ public class GameEngine {
         }
     }
 
-
     /**
-     * Metodo che controlla se ci sono collisioni tra i piloti e rimuove quelli che hanno causato incidenti.
+     * Metodo che elabora i controlli durante un turno di gioco durante la gara analizzando le posizioni dei piloti durante il suo svolgimento verificandone la validità.
+     *
+     * @param driversToRemove la lista dei piloti da rimuovere a causa di collisioni (incidenti)
+     * @return true se la gara è finita, false altrimenti
      */
-    private void checkCollisions() {
-        List<Driver> driversToRemove = new ArrayList<>();
+    private boolean processTurn(List<Driver> driversToRemove) {
+        boolean raceFinished = false;
+        Iterator<Driver> iterator = drivers.iterator();
 
-        for (int i = 0; i < drivers.size(); i++) {
-            Driver driver1 = drivers.get(i);
-            for (int j = i + 1; j < drivers.size(); j++) {
-                Driver driver2 = drivers.get(j);
-                if (driver1.getPosition().equals(driver2.getPosition())) {
-                    System.out.println("Incidente tra " + driver1.getName() + " e " + driver2.getName() + " alla posizione (" + driver1.getPosition().getX() + ", " + driver1.getPosition().getY() + ")");
-                    driversToRemove.add(driver1);
-                    break;
-                }
+        while (iterator.hasNext()) {
+            Driver driver = iterator.next();
+            driver.move(track);
+            Position pos = driver.getPosition();
+            System.out.println(driver.getName() + " è alla posizione (" + pos.getX() + ", " + pos.getY() + ")");
+
+            // Verifica condizioni di vittoria
+            if (track.isValidPosition(pos) && checkVictory(driver)) {
+                raceFinished = true;
+                break;
+            }
+
+            // Controlla collisioni dopo ogni mossa
+            if (checkCollisions(driver)) {
+                driversToRemove.add(driver);
             }
         }
 
-        drivers.removeAll(driversToRemove);
+        return raceFinished;
+    }
+
+    /**
+     * Metodo che controlla se il pilota ha causato una collisione.
+     *
+     * @param driver il pilota che ha appena effettuato una mossa
+     * @return true se è avvenuta una collisione, false altrimenti
+     */
+    private boolean checkCollisions(Driver driver) {
+        for (Driver otherDriver : drivers) {
+            if (!driver.equals(otherDriver) && driver.getPosition().equals(otherDriver.getPosition())) {
+                System.out.println("Incidente tra " + driver.getName() + " e " + otherDriver.getName() + " alla posizione (" + driver.getPosition().getX() + ", " + driver.getPosition().getY() + ")");
+                System.out.println("Pilota rimosso: " + driver.getName());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Metodo che verifica se un pilota ha raggiunto il traguardo.
+     *
+     * @param driver il pilota da verificare
+     * @return true se il pilota ha vinto, false altrimenti
+     */
+    private boolean checkVictory(Driver driver) {
+        Position pos = driver.getPosition();
+        if (track.isValidPosition(pos) && track.getGrid()[pos.getY()][pos.getX()] == 'F') {
+            System.out.println(driver.getName() + " ha vinto la gara!");
+            return true;
+        }
+        return false;
     }
 
 }

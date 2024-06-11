@@ -9,13 +9,14 @@ public class Bot extends Driver {
     private Random random;
 
     /**
-     * Costruisce un Bot con il nome specificato e la posizione di partenza.
+     * Costruisce un Bot con il nome specificato , la posizione di partenza e il carattere di visualizzazione nella pista durante la gara.
      *
-     * @param name il nome del bot
-     * @param startPosition la posizione di partenza
+     * @param name             il nome del bot
+     * @param startPosition    la posizione di partenza
+     * @param displayCharacter il carattere di visualizzazione
      */
-    public Bot(String name, Position startPosition) {
-        super(name, startPosition);
+    public Bot(String name, Position startPosition, char displayCharacter) {
+        super(name, startPosition, displayCharacter);
         this.random = new Random();
     }
 

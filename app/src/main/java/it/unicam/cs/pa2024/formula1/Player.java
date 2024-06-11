@@ -7,14 +7,15 @@ public class Player extends Driver {
     private InputHandler inputHandler;
 
     /**
-     * Costruisce un Player con il nome specificato, la posizione di partenza e l'input handler.
+     * Costruisce un giocatore con il nome specificato, la posizione di partenza, l'input handler e il carattere di visualizzazione nella pista durante la gara.
      *
-     * @param name il nome del giocatore
+     * @param name          il nome del giocatore
      * @param startPosition la posizione di partenza
-     * @param inputHandler l'input handler per il giocatore
+     * @param inputHandler  l'input handler per il giocatore
+     * @param displayCharacter il carattere di visualizzazione
      */
-    public Player(String name, Position startPosition, InputHandler inputHandler) {
-        super(name, startPosition);
+    public Player(String name, Position startPosition, InputHandler inputHandler, char displayCharacter) {
+        super(name, startPosition, displayCharacter);
         this.inputHandler = inputHandler;
     }
 
@@ -28,6 +29,7 @@ public class Player extends Driver {
         boolean validMove = false;
 
         while (!validMove) {
+            System.out.println(this.getName());
             int[] move = inputHandler.getMove();
             int dx = move[0];
             int dy = move[1];

@@ -28,8 +28,10 @@ public class Menu {
         System.out.println("*    nelle direzioni: su, giù, sinistra, destra.   *");
         System.out.println("* 3. Non è possibile andare fuori dal confine del  *");
         System.out.println("*    circuito.                                     *");
-        System.out.println("* 4. Non è possibile andare in una posizione in cui*");
-        System.out.println("*    è presente un'altra macchina.(INCIDENTE!)     *");
+        System.out.println("* 4. Andare in una posizione in cui è presente     *");
+        System.out.println("*    un altro pilota causa un incidente,           *");
+        System.out.println("*    il pilota che ha causato l'incidente viene    *");
+        System.out.println("*    espulso dalla gara.                           *");
         System.out.println("*                                                  *");
         System.out.println("*                   COME GIOCARE                   *");
         System.out.println("*                                                  *");
@@ -39,7 +41,8 @@ public class Menu {
         System.out.println("*   digita: '1 2' (dx e dy)                        *");
         System.out.println("*                                                  *");
         System.out.println("*                   OBIETTIVO                      *");
-        System.out.println("* L'obiettivo è arrivare per primo al traguardo.   *");
+        System.out.println("*                                                  *");
+        System.out.println("*  L'obiettivo è arrivare per primo al traguardo.  *");
         System.out.println("*                                                  *");
         System.out.println("*                  BUONA FORTUNA!                  *");
         System.out.println("****************************************************");

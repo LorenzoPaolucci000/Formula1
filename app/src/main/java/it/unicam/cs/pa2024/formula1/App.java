@@ -23,11 +23,13 @@ public class App {
             InputHandler inputHandler = new InputHandler(scanner);
 
             List<Driver> drivers = new ArrayList<>();
-            drivers.add(new Bot("Bot1", new Position(6, 16))); // Inizializza con la posizione di partenza
-            drivers.add(new Player("Player1", new Position(10, 16), inputHandler)); // Aggiunge un giocatore umano
-           // drivers.add(new Player("Player2", new Position(8, 15), inputHandler)); // Aggiunge un altro giocatore umano
-            System.out.println("Che la gara abbia inizio : Pronti, Partenza, Via!");
+            drivers.add(new Bot("Bot1", new Position(7, 16), 'B'));                         // Inizializza con la posizione di partenza
+            drivers.add(new Player("Player1", new Position(10, 16), inputHandler, '1'));    // Aggiunge un giocatore umano
+            drivers.add(new Player("Player2", new Position(9, 16), inputHandler, '2'));     // Aggiunge un giocatore umano
+            drivers.add(new Player("Player3", new Position(8, 16), inputHandler, '3'));     // Aggiunge un giocatore umano
+
             track.display(drivers);
+            System.out.println("Inzia la gara : Pronti, Partenza, Via!");
             GameEngine gameEngine = new GameEngine(track, drivers);
             gameEngine.startRace();
         } catch (IOException e) {
