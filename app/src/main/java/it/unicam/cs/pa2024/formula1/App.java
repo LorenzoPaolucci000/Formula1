@@ -21,12 +21,19 @@ public class App {
             String trackSelected = Menu.getValidatedInput(scanner, validOptions);
             Track track = TrackLoader.loadTrack(trackSelected + ".txt");
             InputHandler inputHandler = new InputHandler(scanner);
+            // Le mosse dei bot
+            List<Position> movesBot1 = BotMoves.getMovesBot1();
+            List<Position> movesBot2 = BotMoves.getMovesBot2();
+            List<Position> movesBot3 = BotMoves.getMovesBot3();
 
             List<Driver> drivers = new ArrayList<>();
-            drivers.add(new Bot("Bot1", new Position(7, 16), 'B'));                         // Inizializza con la posizione di partenza
-            drivers.add(new Player("Player1", new Position(10, 16), inputHandler, '1'));    // Aggiunge un giocatore umano
-            drivers.add(new Player("Player2", new Position(9, 16), inputHandler, '2'));     // Aggiunge un giocatore umano
-            drivers.add(new Player("Player3", new Position(8, 16), inputHandler, '3'));     // Aggiunge un giocatore umano
+            drivers.add(new Bot("Bot1", new Position(6, 16), 'B', movesBot1));                        //Aggiunge un bot alla gara
+            drivers.add(new Bot("Bot2", new Position(7, 16), 'B', movesBot2));                        //Aggiunge un bot alla gara
+            drivers.add(new Bot("Bot3", new Position(8, 16), 'B', movesBot3));                        //Aggiunge un bot alla gara
+            drivers.add(new Player("Player1", new Position(9, 16), inputHandler, '1'));               // Aggiunge un giocatore umano
+            drivers.add(new Player("Player2", new Position(10, 16), inputHandler, '2'));              // Aggiunge un giocatore umano
+            drivers.add(new Player("Player3", new Position(11, 16), inputHandler, '3'));              // Aggiunge un giocatore umano
+
 
             track.display(drivers);
             System.out.println("Inzia la gara : Pronti, Partenza, Via!");
