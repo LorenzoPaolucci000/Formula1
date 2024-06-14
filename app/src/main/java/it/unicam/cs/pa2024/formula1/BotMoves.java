@@ -9,7 +9,7 @@ import java.util.List;
 public class BotMoves {
 
     /**
-     * Restituisce la lista delle posizioni per il Bot1.
+     * Restituisce la lista delle posizioni per il Bot1 che parte alla posizione (6, 16).
      *
      * @return una lista di posizioni che rappresentano le mosse del Bot1.
      */
@@ -31,7 +31,7 @@ public class BotMoves {
     }
 
     /**
-     * Restituisce la lista delle posizioni per il Bot2.
+     * Restituisce la lista delle posizioni per il Bot2 che parte alla posizione (7, 16).
      *
      * @return una lista di posizioni che rappresentano le mosse del Bot2.
      */
@@ -53,7 +53,7 @@ public class BotMoves {
     }
 
     /**
-     * Restituisce la lista delle posizioni per il Bot3.
+     * Restituisce la lista delle posizioni per il Bot3 che parte alla posizione (8, 16).
      *
      * @return una lista di posizioni che rappresentano le mosse del Bot3.
      */

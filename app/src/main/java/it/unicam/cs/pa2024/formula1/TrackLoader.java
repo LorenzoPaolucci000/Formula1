@@ -2,6 +2,7 @@ package it.unicam.cs.pa2024.formula1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -18,8 +19,11 @@ public class TrackLoader {
      * @throws IOException se si verifica un errore di I/O
      */
     public static Track loadTrack(String fileName) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-                TrackLoader.class.getClassLoader().getResourceAsStream(fileName), StandardCharsets.UTF_8))) {
+        InputStream inputStream = TrackLoader.class.getClassLoader().getResourceAsStream(fileName);
+        if (inputStream == null) {
+            throw new IOException("File non trovato: " + fileName);
+        }
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
             List<String> lines = reader.lines().toList();
             int rows = lines.size();
             int cols = lines.get(0).length();

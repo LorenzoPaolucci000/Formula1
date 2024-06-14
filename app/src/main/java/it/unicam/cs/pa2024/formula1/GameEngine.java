@@ -54,7 +54,7 @@ public class GameEngine {
      * @param driversToRemove la lista dei piloti da rimuovere a causa di collisioni (incidenti)
      * @return true se la gara è finita, false altrimenti
      */
-    private boolean processTurn(List<Driver> driversToRemove) {
+    protected boolean processTurn(List<Driver> driversToRemove) {
         boolean raceFinished = false;
         Iterator<Driver> iterator = drivers.iterator();
 
