@@ -3,9 +3,9 @@ package it.unicam.cs.pa2024.formula1;
 import java.util.List;
 
 /**
- * Questa classe rappresenta il tracciato di gara.
+ * Questa classe rappresenta il tracciato di una gara.
  */
-public class Track {
+public class Track implements Circuit{
     private char[][] grid;
 
     /**
@@ -22,6 +22,7 @@ public class Track {
      *
      * @return la griglia
      */
+    @Override
     public char[][] getGrid() {
         return grid;
     }
@@ -31,6 +32,7 @@ public class Track {
      *
      * @param drivers la lista dei piloti
      */
+    @Override
     public void display(List<Driver> drivers) {
         char[][] displayGrid = new char[grid.length][];
         for (int i = 0; i < grid.length; i++) {
@@ -56,6 +58,7 @@ public class Track {
      * @param position la posizione da verificare
      * @return true se la posizione è valida, false altrimenti
      */
+    @Override
     public boolean isValidPosition(Position position) {
         int x = position.getX();
         int y = position.getY();

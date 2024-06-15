@@ -10,15 +10,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Classe di test per la classe GameEngine.
+ * Classe di test per la classe DefaultGameEngine.
  * Verifica il corretto svolgimento della gara avviando una simulazione con tre piloti bot.
  */
-class GameEngineTest {
+class DefaultGameEngineTest {
 
 
     private Track track;
     private List<Driver> drivers;
-    private GameEngine gameEngine;
+    private DefaultGameEngine gameEngine;
 
     /**
      * Metodo che carica un piccolo tracciato (dal file CircuitoTest.txt) e crea una lista di piloti bot per prepare una simulazione di gara.
@@ -39,7 +39,7 @@ class GameEngineTest {
         drivers.add(new Bot("Bot2", new Position(9, 6), '2', movesBot2));
         drivers.add(new Bot("Bot3", new Position(10, 6), '3', movesBot3));
 
-        gameEngine = new GameEngine(track, drivers);
+        gameEngine = new DefaultGameEngine(track, drivers);
     }
 
     /**

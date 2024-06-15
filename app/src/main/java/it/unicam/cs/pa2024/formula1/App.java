@@ -37,7 +37,7 @@ public class App {
 
             track.display(drivers);
             System.out.println("Inzia la gara : Pronti, Partenza, Via!");
-            GameEngine gameEngine = new GameEngine(track, drivers);
+            DefaultGameEngine gameEngine = new DefaultGameEngine(track, drivers);
             gameEngine.startRace();
         } catch (IOException e) {
             e.printStackTrace();

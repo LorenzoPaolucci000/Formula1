@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  *  Questa classe gestisce gli input del giocatore durante la gara.
  */
-public class InputHandler {
+public class InputHandler implements UserInput {
     private Scanner scanner;
 
     /**
@@ -17,12 +17,7 @@ public class InputHandler {
         this.scanner = scanner;
     }
 
-    /**
-     * Metodo che richiede all'utente di inserire le coordinate dx e dy della prossima mossa
-     * e restituisce un array di due interi dx e dy.
-     *
-     * @return un array di due interi che rappresenta lo spostamento dx e dy
-     */
+   @Override
     public int[] getMove() {
         while (true) {
             System.out.print("Inserisci le coordinate della tua prossima mossa (dx dy): ");
