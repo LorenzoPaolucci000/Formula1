@@ -24,11 +24,12 @@ public class Menu {
         System.out.println("*                                                  *");
         System.out.println("* 1. Ogni giocatore sceglie una posizione (x,y)    *");
         System.out.println("*    per muovere la propria macchina.              *");
-        System.out.println("* 2. Puoi muoverti di massimo tre caselle per volta*"); //TODO Da rivedere lettere accentate
-        System.out.println("*    nelle direzioni: su, giù, sinistra, destra.   *");
-        System.out.println("* 3. Non è possibile andare fuori dal confine del  *");
+        System.out.println("* 2. Puoi muoverti di massimo tre caselle per volta*");
+        System.out.println("*    nelle direzioni:                              *");
+        System.out.println("*    in alto, in basso, a sinistra, a destra.      *");
+        System.out.println("* 3. Non si puo andare fuori dal confine del       *");
         System.out.println("*    circuito.                                     *");
-        System.out.println("* 4. Andare in una posizione in cui è presente     *");
+        System.out.println("* 4. Andare in una posizione in cui si trova       *");
         System.out.println("*    un altro pilota causa un incidente,           *");
         System.out.println("*    il pilota che ha causato l'incidente viene    *");
         System.out.println("*    espulso dalla gara.                           *");
@@ -42,7 +43,7 @@ public class Menu {
         System.out.println("*                                                  *");
         System.out.println("*                   OBIETTIVO                      *");
         System.out.println("*                                                  *");
-        System.out.println("*  L'obiettivo è arrivare per primo al traguardo.  *");
+        System.out.println("*         Arrivare per primo al traguardo.         *");
         System.out.println("*                                                  *");
         System.out.println("*                  BUONA FORTUNA!                  *");
         System.out.println("****************************************************");

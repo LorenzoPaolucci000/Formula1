@@ -36,7 +36,7 @@ public class GameEngine {
             List<Driver> driversToRemove = new ArrayList<>();
             raceFinished = processTurn(driversToRemove);
 
-            // Rimuovi i piloti che hanno causato collisioni
+            // Rimuove i piloti che hanno causato collisioni
             drivers.removeAll(driversToRemove);
 
             // Visualizza lo stato attuale della gara
@@ -62,7 +62,7 @@ public class GameEngine {
             Driver driver = iterator.next();
             driver.move(track);
             Position pos = driver.getPosition();
-            System.out.println(driver.getName() + " è alla posizione (" + pos.getX() + ", " + pos.getY() + ")");
+            System.out.println(driver.getName() + " si trova alla posizione (" + pos.getX() + ", " + pos.getY() + ")");
 
             // Verifica condizioni di vittoria
             if (track.isValidPosition(pos) && checkVictory(driver)) {
