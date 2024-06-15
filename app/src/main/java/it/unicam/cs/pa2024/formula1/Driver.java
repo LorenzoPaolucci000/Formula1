@@ -9,7 +9,7 @@ public abstract class Driver implements DriverInterface {
     protected char displayCharacter;
 
     /**
-     * Costruisce un pilota con il nome specificato, la posizione di partenza e il carattere di visualizzazione (nel tracciato durante la gara).
+     * Costruisce un pilota con il nome specificato, la posizione di partenza e il carattere di visualizzazione (visualizzato nel tracciato durante la gara).
      *
      * @param name             il nome del pilota
      * @param startPosition    la posizione di partenza
