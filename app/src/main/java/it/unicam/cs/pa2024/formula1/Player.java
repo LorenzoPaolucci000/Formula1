@@ -5,6 +5,7 @@ package it.unicam.cs.pa2024.formula1;
  */
 public class Player extends Driver {
     private InputHandler inputHandler;
+    private boolean isFirstTurn;
 
     /**
      * Costruisce un giocatore con il nome specificato, la posizione di partenza, l'input handler e il carattere di visualizzazione nella pista durante la gara.
@@ -17,6 +18,7 @@ public class Player extends Driver {
     public Player(String name, Position startPosition, InputHandler inputHandler, char displayCharacter) {
         super(name, startPosition, displayCharacter);
         this.inputHandler = inputHandler;
+        this.isFirstTurn = true;
     }
 
     /**
@@ -41,9 +43,15 @@ public class Player extends Driver {
 
             Position newPosition = new Position(position.getX() + dx, position.getY() - dy);
 
+            if (isFirstTurn && dy < 0) {
+                System.out.println("Mossa non valida nel primo turno, non puoi muoverti verso il basso. Prova di nuovo.");
+                continue;
+            }
+
             if (track.isValidPosition(newPosition)) {
                 this.position = newPosition;
                 validMove = true;
+                isFirstTurn = false;
             } else {
                 System.out.println("Mossa non valida, prova di nuovo.");
             }
