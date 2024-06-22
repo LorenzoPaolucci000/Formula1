@@ -3,7 +3,7 @@ package it.unicam.cs.pa2024.formula1;
 /**
  * Questa classe astratta rappresenta un pilota comune.
  */
-public abstract class Driver implements IDriver {
+public abstract class Driver implements DriverMoves {
     protected String name;
     protected Position position;
     protected char displayCharacter;
@@ -27,17 +27,29 @@ public abstract class Driver implements IDriver {
         return Math.abs(dx) <= 3 && Math.abs(dy) <= 3;
     }
 
-    @Override
+    /**
+     * Restituisce la posizione attuale del pilota.
+     *
+     * @return la posizione (x,y)
+     */
     public Position getPosition() {
         return position;
     }
 
-    @Override
+    /**
+     * Restituisce il nome del pilota.
+     *
+     * @return il nome
+     */
     public String getName() {
         return name;
     }
 
-    @Override
+    /**
+     * Metodo che restituisce il carattere da utilizzare per visualizzare il pilota sulla pista.
+     *
+     * @return il carattere di visualizzazione
+     */
     public char getDisplayCharacter() {
         return displayCharacter;
     }

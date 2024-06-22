@@ -1,9 +1,9 @@
 package it.unicam.cs.pa2024.formula1;
 
 /**
- * Questa interfaccia rappresenta un pilota durante la gara.
+ * Questa interfaccia rappresenta i movimenti del pilota durante la gara.
  */
-public interface IDriver {
+public interface DriverMoves {
     /**
      * Muove il pilota basandosi sullo stato attuale del tracciato.
      *
@@ -20,24 +20,4 @@ public interface IDriver {
      */
     boolean isValidMove(int dx, int dy);
 
-    /**
-     * Restituisce la posizione attuale del driver.
-     *
-     * @return la posizione (x,y)
-     */
-    Position getPosition();
-
-    /**
-     * Restituisce il nome del pilota.
-     *
-     * @return il nome
-     */
-    String getName();
-
-    /**
-     * Metodo che restituisce il carattere da utilizzare per visualizzare il pilota sulla pista.
-     *
-     * @return il carattere di visualizzazione
-     */
-    char getDisplayCharacter();
 }

@@ -4,7 +4,7 @@ package it.unicam.cs.pa2024.formula1;
  * Questa classe rappresenta un giocatore umano nella gara.
  */
 public class Player extends Driver {
-    private InputHandler inputHandler;
+    private final InputHandler inputHandler;
     private boolean isFirstTurn;
 
     /**
@@ -43,18 +43,36 @@ public class Player extends Driver {
 
             Position newPosition = new Position(position.getX() + dx, position.getY() - dy);
 
-            if (isFirstTurn && dy < 0) {
-                System.out.println("Mossa non valida nel primo turno, non puoi muoverti verso il basso. Prova di nuovo.");
+            if (!isMoveAllowed(dy, newPosition, track)) {
                 continue;
             }
 
-            if (track.isValidPosition(newPosition)) {
-                this.position = newPosition;
-                validMove = true;
-                isFirstTurn = false;
-            } else {
-                System.out.println("Mossa non valida, prova di nuovo.");
-            }
+            this.position = newPosition;
+            validMove = true;
+            isFirstTurn = false;
         }
+    }
+
+    /**
+     * Metodo che verifica se un movimento è valido.
+     * Controlla se il movimento è valido nel primo turno (non permette di muoversi verso il basso)
+     * e se la nuova posizione è valida nel tracciato.
+     *
+     * @param dy lo spostamento verticale della mossa inserita
+     * @param newPosition la  posizione da verificare
+     * @param track il tracciato su cui si muove il giocatore
+     * @return true se il movimento è consentito, false altrimenti
+     */
+    private boolean isMoveAllowed(int dy, Position newPosition, Track track) {
+        if (isFirstTurn && dy < 0) {
+            System.out.println("Mossa non valida al primo turno, non puoi muoverti verso il basso. Prova di nuovo.");
+            return false;
+        }
+        if (!track.isValidPosition(newPosition)) {
+            System.out.println("Mossa non valida, prova di nuovo.");
+            return false;
+        }
+
+        return true;
     }
 }
